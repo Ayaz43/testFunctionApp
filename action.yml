@@ -1,0 +1,5 @@
+name: 'Docker action to run Azure CLI using login action generated token'
+description: 'Greet someone and record the time'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
