@@ -3,7 +3,7 @@ name: CI
 
 # Controls when the action will run. Triggers the workflow on repository dispatch
 # events but only for the master branch
-on:
+on: 
   repository_dispatch:
     types: [machinelearningservices-modelregistered, machinelearningservices-modeldeployed, machinelearningservices-runcompleted, machinelearningservices-runstatuschanged, machinelearningservices-datasetdriftdetected, appconfiguration-keyvaluemodified, appconfiguration-keyvaluedeleted, storage-blobcreated, storage-blobdeleted, storage-blobrenamed, storage-directorycreated, storage-directoryrenamed, storage-directorydeleted, containerregistery-imagepushed, containerregistery-imagedeleted, containerregistery-chartpushed, containerregistery-chartdeleted, web/sites-backupoperationstarted, web/sites-backupoperationcompleted, web/sites-backupoperationfailed, web/sites-restoreoperationstarted, web/sites-restoreoperationcompleted, web/sites-restoreoperationfailed, web/sites-slotswapstarted, web/sites-slotswapcompleted, web/sites-slotswapfailed, web/sites-slotswapwithpreviewstarted, web/sites-slotswapwithpreviewcancelled, eventhub-capturefilecreated, devices-devicecreated, devices-devicedeleted, devices-deviceconnected, devices-devicedisconnected, devices-devicetelementry, keyvault-certificatenewversioncreated, keyvault-certificatenearexpiry, keyvault-certificateexpired, maps-geofenceentered, maps-geofenceexited, maps-geofenceresult, media-jobstatechange, media-jobscheduled, media-jobprocessing, media-jobcanceling, media-jobfinished, media-jobcanceled, media-joberrored, web/sites-appupdated-changedappsettings]
 
@@ -15,3 +15,18 @@ jobs:
     steps:
     # Checks-out your  repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: Create Event Subscription
+      id: azure_eventgridsubscriber
+      uses: mlopstemplates/azure_eventgridsubscriber@master
+      with:
+        azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+        events_to_subscribe: |
+            Microsoft.Storage.BlobCreated
+            Microsoft.Storage.BlobDeleted
+            Microsoft.Storage.BlobRenamed	
+            Microsoft.Storage.DirectoryCreated	
+            Microsoft.Storage.DirectoryRenamed	
+            Microsoft.Storage.DirectoryDeleted	
+        provider_type: "Microsoft.Storage/storageAccounts/mydlsg2"
+        resource_group: "data-lake-storage-resource-group"
+        pattoken: ${{secrets.PATTOKEN}}
