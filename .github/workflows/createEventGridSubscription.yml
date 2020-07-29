@@ -27,6 +27,6 @@ jobs:
             Microsoft.Storage.DirectoryCreated	
             Microsoft.Storage.DirectoryRenamed	
             Microsoft.Storage.DirectoryDeleted	
-        provider_type: "Microsoft.Storage/storageAccounts/mydlsg2"
+        provider_type: "Microsoft.Storage/storageAccounts/mydlsg22"
         resource_group: "data-lake-storage-resource-group"
         pattoken: ${{secrets.PATTOKEN}}
