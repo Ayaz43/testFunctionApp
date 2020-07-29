@@ -28,7 +28,7 @@ jobs:
       with:
         # required inputs as secrets
         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-        #parameters_file: "test/test_aml_compute.json"
+        parameters_file: "test/test_aml_compute.json"
         
     # AML Compute Action
     - uses: Azure/aml-run@v1
