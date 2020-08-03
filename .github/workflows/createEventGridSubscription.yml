@@ -1,6 +1,5 @@
 
 name: CreateEventSubscription
-
 # Controls when the action will run. Triggers the workflow on repository dispatch
 # events but only for the master branch
 on: 
