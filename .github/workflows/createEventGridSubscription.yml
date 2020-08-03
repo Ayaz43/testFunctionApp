@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Create Event Subscription
       id: azure_eventgridsubscriber
-      uses: mlopstemplates/azure_eventgridsubscriber@master
+      uses: Ayaz43/azure_eventgridsubscriber@master
       with:
         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
         events_to_subscribe: |
