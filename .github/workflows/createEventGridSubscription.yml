@@ -27,6 +27,6 @@ jobs:
             Microsoft.Storage.DirectoryCreated	
             Microsoft.Storage.DirectoryRenamed	
             Microsoft.Storage.DirectoryDeleted	
-        provider_type: "Microsoft.Storage/storageAccounts/mydls3"
-        resource_group: "dataLakeStorageGroup"
+        provider_type: "Microsoft.Storage/storageAccounts/mydls10"
+        resource_group: "functionApps"
         pattoken: ${{secrets.PATTOKEN}}
